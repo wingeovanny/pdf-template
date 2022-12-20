@@ -1,0 +1,216 @@
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-BlackItalic.eot');
+    src: local('Prelo-Black Italic'), local('Prelo-BlackItalic'),
+        url('Prelo-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-BlackItalic.woff2') format('woff2'),
+        url('Prelo-BlackItalic.woff') format('woff'),
+        url('Prelo-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-BoldItalic.eot');
+    src: local('Prelo-Bold Italic'), local('Prelo-BoldItalic'),
+        url('Prelo-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-BoldItalic.woff2') format('woff2'),
+        url('Prelo-BoldItalic.woff') format('woff'),
+        url('Prelo-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-ExtraLightItalic.eot');
+    src: local('Prelo-ExtraLight Italic'), local('Prelo-ExtraLightItalic'),
+        url('Prelo-ExtraLightItalic.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-ExtraLightItalic.woff2') format('woff2'),
+        url('Prelo-ExtraLightItalic.woff') format('woff'),
+        url('Prelo-ExtraLightItalic.ttf') format('truetype');
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-Bold.eot');
+    src: local('Prelo-Bold'),
+        url('Prelo-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-Bold.woff2') format('woff2'),
+        url('Prelo-Bold.woff') format('woff'),
+        url('Prelo-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-Black.eot');
+    src: local('Prelo-Black'),
+        url('Prelo-Black.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-Black.woff2') format('woff2'),
+        url('Prelo-Black.woff') format('woff'),
+        url('Prelo-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-ExtraLight.eot');
+    src: local('Prelo-ExtraLight'),
+        url('Prelo-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-ExtraLight.woff2') format('woff2'),
+        url('Prelo-ExtraLight.woff') format('woff'),
+        url('Prelo-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-LightItalic.eot');
+    src: local('Prelo-Light Italic'), local('Prelo-LightItalic'),
+        url('Prelo-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-LightItalic.woff2') format('woff2'),
+        url('Prelo-LightItalic.woff') format('woff'),
+        url('Prelo-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-ExtraBold.eot');
+    src: local('Prelo-ExtraBold'),
+        url('Prelo-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-ExtraBold.woff2') format('woff2'),
+        url('Prelo-ExtraBold.woff') format('woff'),
+        url('Prelo-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-ExtraBoldItalic.eot');
+    src: local('Prelo-ExtraBold Italic'), local('Prelo-ExtraBoldItalic'),
+        url('Prelo-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-ExtraBoldItalic.woff2') format('woff2'),
+        url('Prelo-ExtraBoldItalic.woff') format('woff'),
+        url('Prelo-ExtraBoldItalic.ttf') format('truetype');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-Light.eot');
+    src: local('Prelo-Light'),
+        url('Prelo-Light.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-Light.woff2') format('woff2'),
+        url('Prelo-Light.woff') format('woff'),
+        url('Prelo-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-SemiBoldItalic.eot');
+    src: local('Prelo-SemiBold Italic'), local('Prelo-SemiBoldItalic'),
+        url('Prelo-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-SemiBoldItalic.woff2') format('woff2'),
+        url('Prelo-SemiBoldItalic.woff') format('woff'),
+        url('Prelo-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-SemiBold.eot');
+    src: local('Prelo-SemiBold'),
+        url('Prelo-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-SemiBold.woff2') format('woff2'),
+        url('Prelo-SemiBold.woff') format('woff'),
+        url('Prelo-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Prelo Book';
+    src: url('Prelo-BookItalic.eot');
+    src: local('Prelo-Book Italic'), local('Prelo-BookItalic'),
+        url('Prelo-BookItalic.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-BookItalic.woff2') format('woff2'),
+        url('Prelo-BookItalic.woff') format('woff'),
+        url('Prelo-BookItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Prelo Hairline';
+    src: url('Prelo-HairlineItalic.eot');
+    src: local('Prelo-Hairline Italic'), local('Prelo-HairlineItalic'),
+        url('Prelo-HairlineItalic.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-HairlineItalic.woff2') format('woff2'),
+        url('Prelo-HairlineItalic.woff') format('woff'),
+        url('Prelo-HairlineItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Prelo Hairline';
+    src: url('Prelo-Hairline.eot');
+    src: local('Prelo-Hairline'),
+        url('Prelo-Hairline.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-Hairline.woff2') format('woff2'),
+        url('Prelo-Hairline.woff') format('woff'),
+        url('Prelo-Hairline.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-MediumItalic.eot');
+    src: local('Prelo-Medium Italic'), local('Prelo-MediumItalic'),
+        url('Prelo-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-MediumItalic.woff2') format('woff2'),
+        url('Prelo-MediumItalic.woff') format('woff'),
+        url('Prelo-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Prelo Book';
+    src: url('Prelo-Book.eot');
+    src: local('Prelo-Book'),
+        url('Prelo-Book.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-Book.woff2') format('woff2'),
+        url('Prelo-Book.woff') format('woff'),
+        url('Prelo-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Prelo';
+    src: url('Prelo-Medium.eot');
+    src: local('Prelo-Medium'),
+        url('Prelo-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Prelo-Medium.woff2') format('woff2'),
+        url('Prelo-Medium.woff') format('woff'),
+        url('Prelo-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+

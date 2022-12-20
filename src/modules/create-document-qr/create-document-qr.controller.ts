@@ -1,34 +1,25 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Header } from '@nestjs/common';
+import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { CreateDocumentQrService } from './create-document-qr.service';
-import { CreateCreateDocumentQrDto } from './dto/create-create-document-qr.dto';
-import { UpdateCreateDocumentQrDto } from './dto/update-create-document-qr.dto';
+import { FileData } from './dto/create-create-document-qr.dto';
 
-@Controller('create-document-qr')
+
+@ApiTags('qr-files')
+@Controller('qrfiles')
 export class CreateDocumentQrController {
-  constructor(private readonly createDocumentQrService: CreateDocumentQrService) {}
 
-  @Post()
-  create(@Body() createCreateDocumentQrDto: CreateCreateDocumentQrDto) {
-    return this.createDocumentQrService.create(createCreateDocumentQrDto);
+  constructor(private readonly createDocumentQrService: CreateDocumentQrService) { }
+
+  @Post('qr-merchant')
+  @ApiCreatedResponse({
+    description: 'Pdf qr branch',
+  })
+  @Header('Content-Type', 'appication/pdf')
+  getPdfRol(
+    @Body() dataFile: FileData,
+  ): Promise<any> {
+    return this.createDocumentQrService.generatePdf(dataFile);
   }
 
-  @Get()
-  findAll() {
-    return this.createDocumentQrService.findAll();
-  }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.createDocumentQrService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCreateDocumentQrDto: UpdateCreateDocumentQrDto) {
-    return this.createDocumentQrService.update(+id, updateCreateDocumentQrDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.createDocumentQrService.remove(+id);
-  }
 }

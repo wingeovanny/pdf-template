@@ -1,26 +1,37 @@
 import { Injectable } from '@nestjs/common';
-import { CreateCreateDocumentQrDto } from './dto/create-create-document-qr.dto';
-import { UpdateCreateDocumentQrDto } from './dto/update-create-document-qr.dto';
+import { PdfHelper } from 'src/shared/pdf-generator';
+import { FileData } from './dto/create-create-document-qr.dto';
+
 
 @Injectable()
 export class CreateDocumentQrService {
-  create(createCreateDocumentQrDto: CreateCreateDocumentQrDto) {
-    return 'This action adds a new createDocumentQr';
+
+  private pdfHelper: PdfHelper;
+
+  async generatePdf(info: FileData): Promise<any> {
+    return this.pdfHelper.createPDF(info);
   }
 
-  findAll() {
-    return `This action returns all createDocumentQr`;
-  }
 
-  findOne(id: number) {
-    return `This action returns a #${id} createDocumentQr`;
-  }
+  // create(createCreateDocumentQrDto: FileData) {
+  //   return 'This action adds a new createDocumentQr';
+  // }
 
-  update(id: number, updateCreateDocumentQrDto: UpdateCreateDocumentQrDto) {
-    return `This action updates a #${id} createDocumentQr`;
-  }
+  // findAll() {
+  //   return `This action returns all createDocumentQr`;
+  // }
 
-  remove(id: number) {
-    return `This action removes a #${id} createDocumentQr`;
-  }
+  // findOne(id: number) {
+  //   return `This action returns a #${id} createDocumentQr`;
+  // }
+
+  // update(id: number, updateCreateDocumentQrDto: FileData) {
+  //   return `This action updates a #${id} createDocumentQr`;
+  // }
+
+  // remove(id: number) {
+  //   return `This action removes a #${id} createDocumentQr`;
+  // }
+
+
 }

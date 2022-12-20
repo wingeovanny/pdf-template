@@ -1,1 +1,9 @@
-export class CreateCreateDocumentQrDto {}
+import { ApiProperty } from '@nestjs/swagger';
+
+export class FileData {
+    @ApiProperty()
+    template: string;
+
+    @ApiProperty()
+    data: any;
+}

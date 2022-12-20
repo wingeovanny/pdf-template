@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR_A4_2</title>
+
+    <style>
+        body {
+            background: rgb(204, 204, 204);
+
+        }
+
+        page[size="A4"] {
+            background: #FFFFFF;
+            width: 21cm;
+            height: 29.7cm;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 0.5cm;
+            box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+        }
+
+        @media print {
+
+            body,
+            page[size="A4"] {
+                margin: 0;
+                box-shadow: 0;
+            }
+        }
+
+
+
+        .contenedor {
+            display: grid;
+            grid-template-columns: auto;
+            width: 21cm;
+            height: 29.6cm;
+
+        }
+
+        .contenedor-qrs {
+            display: grid;
+            margin: 50px 80px 50px 80px;
+            grid-template-columns: auto;
+            justify-content: center;
+
+        }
+
+        .contenedor-body-qrs {
+            display: grid;
+            grid-template-columns: 1.5cm 13cm 1.5cm;
+            border-top: 1px dashed black;
+        }
+
+
+        .cards {
+
+            margin-top: 15px;
+            width: 12cm;
+            height: 11cm;
+        }
+
+
+        .qr2 {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            height: 9cm;
+
+        }
+
+
+
+        .text-qr {
+            margin-top: 4px;
+            font-family: 'Prelo';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 26px;
+            line-height: 32px;
+            color: #000000;
+            text-align: center;
+
+
+        }
+
+        .text-footer-qr {
+            margin-top: 2px;
+            font-family: 'Prelo';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 22px;
+            color: #000000;
+            text-align: center;
+        }
+
+
+
+
+        .texto-vertical-1 {
+            align-items: center;
+            display: flex;
+            border-left: 1px dashed black;
+            border-right: 1px dashed black;
+        }
+
+        .texto-vertical-2 {
+
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+            text-align: right;
+            margin: 10px;
+            font-weight: bold;
+
+        }
+    </style>
+</head>
+
+<body>
+    <page size="A4">
+        <div class="contenedor">
+            <div class="contenedor-qrs ">
+
+                <div class="contenedor-body-qrs">
+
+                    <div class="texto-vertical-1 ">
+                        <div class="texto-vertical-2">C00001</div>
+                    </div>
+                    <div class="cards">
+                        <div class="qr2">
+                            <img src="./images/QRcode.png" style="height:100%">
+                        </div>
+                        <div class="text-qr">
+                            <strong>Clinica internacional de los Andes de las americas</strong>
+                        </div>
+                        <div class="text-footer-qr">Sede de la sucursal queda en carolina</div>
+                        <div class="text-footer-qr">12345678</div>
+
+                    </div>
+
+                    <div class="texto-vertical-1 ">
+                        <div class="texto-vertical-2">C00001</div>
+                    </div>
+
+
+                </div>
+
+                <div class="contenedor-body-qrs" style="border-bottom: 1px dashed black;">
+
+                    <div class="texto-vertical-1 ">
+                        <div class="texto-vertical-2">C00001</div>
+                    </div>
+                    <div class="cards">
+                        <div class="qr2">
+                            <img src="./images/QRcode.png" style="height:100%">
+                        </div>
+                        <div class="text-qr">
+                            <strong>Clinica internacional de los Andes de las americas</strong>
+                        </div>
+                        <div class="text-footer-qr">Sede de la sucursal queda en carolina</div>
+                        <div class="text-footer-qr">12345678</div>
+
+                    </div>
+                    <div class="texto-vertical-1 ">
+                        <div class="texto-vertical-2">C00001</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </page>
+
+</body>
+
+</html>
