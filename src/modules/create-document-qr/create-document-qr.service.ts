@@ -14,6 +14,8 @@ export class CreateDocumentQrService {
   }
 
   async generateQrPdf(info: FileData): Promise<any> {
+
+
     return this.pdfHelper.createPDF(info);
 
   }
