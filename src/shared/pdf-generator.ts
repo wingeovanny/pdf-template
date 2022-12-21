@@ -37,13 +37,15 @@ export class PdfHelper {
     }
 
     public async createPDF(dataFile: FileData) {
-        const templateHtml = fs.readFileSync('template.html', 'utf8');
 
-        console.log('data: ', templateHtml);
+        const templateHtml = fs.readFileSync(`./src/assets/templates/${dataFile.template}`, 'utf8');
 
         const template = handlebars.compile(templateHtml);
+        var mili = new Date();
+        var milis = mili.getTime();
 
         const html = template(dataFile.data);
+
         const finalPageContent = eval('`' + html + '`');
         if (!this.browser) {
             await this.startBrowser();
@@ -52,9 +54,9 @@ export class PdfHelper {
         await page.setContent(`${finalPageContent}`, {
             waitUntil: 'networkidle0',
         });
-        //await page.addStyleTag({ path: 'src/assets/bootstrap.min.css' });
 
-        //this.fileOptions.path = path.join('pdf', `${info.data.name}.pdf`);
+        this.fileOptions.path = path.join('pdf', `${dataFile.data.branch}-${milis}.pdf`);
+
         const file = await page.pdf(this.fileOptions);
         await page.close();
         return file;

@@ -17,6 +17,16 @@ export class CreateDocumentQrController {
   })
   @Header('Content-Type', 'appication/pdf')
   generaPdfQR(@Headers() headers, @Body() dataQr: FileData): Promise<any> {
+
+    const data = {
+      template: "templateqrfondo.html",
+      data: {
+        branch: "MACDONALS",
+        sitebranch: "AV PATRIA Y AMAZONAS",
+        codesite: "298102",
+        coderedmainsite: "COD-001029"
+      }
+    }
     return this.createDocumentQrService.generateQrPdf(dataQr);
   }
 
