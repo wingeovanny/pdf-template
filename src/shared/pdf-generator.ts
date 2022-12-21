@@ -22,7 +22,6 @@ export class PdfHelper {
     };
     constructor() {
         this.startBrowser();
-        this.registerHelpers();
     }
 
     async startBrowser() {
@@ -32,34 +31,18 @@ export class PdfHelper {
         });
     }
 
-    async registerHelpers() {
-        handlebars.registerHelper('switch', function (value, options) {
-            this.switch_value = value;
-            this.switch_break = false;
-            return options.fn(this);
-        });
-
-        handlebars.registerHelper('case', function (value, options) {
-            if (value == this.switch_value) {
-                this.switch_break = true;
-                return options.fn(this);
-            }
-        });
-
-        handlebars.registerHelper('default', function (value, options) {
-            if (this.switch_break == false) {
-                return value;
-            }
-        });
-    }
 
     async closeBrowser() {
         await this.browser.close();
     }
 
     public async createPDF(dataFile: FileData) {
-        const templateHtml = fs.readFileSync(dataFile.template, 'utf8');
+        const templateHtml = fs.readFileSync('template.html', 'utf8');
+
+        console.log('data: ', templateHtml);
+
         const template = handlebars.compile(templateHtml);
+
         const html = template(dataFile.data);
         const finalPageContent = eval('`' + html + '`');
         if (!this.browser) {
@@ -70,10 +53,14 @@ export class PdfHelper {
             waitUntil: 'networkidle0',
         });
         //await page.addStyleTag({ path: 'src/assets/bootstrap.min.css' });
+
+        //this.fileOptions.path = path.join('pdf', `${info.data.name}.pdf`);
         const file = await page.pdf(this.fileOptions);
         await page.close();
         return file;
+
     }
+
 
 
 }

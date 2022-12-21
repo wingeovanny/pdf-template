@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Header } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Header, Headers } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { CreateDocumentQrService } from './create-document-qr.service';
 import { FileData } from './dto/create-create-document-qr.dto';
@@ -10,16 +10,17 @@ export class CreateDocumentQrController {
 
   constructor(private readonly createDocumentQrService: CreateDocumentQrService) { }
 
-  @Post('qr-merchant')
+
+  @Post('qr-generator')
   @ApiCreatedResponse({
-    description: 'Pdf qr branch',
+    description: 'Pdf qr',
   })
   @Header('Content-Type', 'appication/pdf')
-  getPdfRol(
-    @Body() dataFile: FileData,
-  ): Promise<any> {
-    return this.createDocumentQrService.generatePdf(dataFile);
+  generaPdfQR(@Headers() headers, @Body() dataQr: FileData): Promise<any> {
+    return this.createDocumentQrService.generateQrPdf(dataQr);
   }
+
+
 
 
 }

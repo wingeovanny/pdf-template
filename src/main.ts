@@ -7,8 +7,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const options = new DocumentBuilder()
-    .setTitle('PDF files')
-    .setDescription('Files')
+    .setTitle('PDF Qr\'s')
+    .setDescription('Files-Pdfs')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, options, {
