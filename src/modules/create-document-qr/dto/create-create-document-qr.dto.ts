@@ -5,5 +5,5 @@ export class FileData {
     template: string;
 
     @ApiProperty()
-    data: object;
+    data: any;
 }

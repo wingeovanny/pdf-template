@@ -38,7 +38,6 @@
             text-align: center;
             height: 20%;
             padding-top: 30px;
-
         }
 
         .container-head>div {
@@ -58,30 +57,54 @@
 
         .container-main-one {
             display: grid;
-            justify-content: center;
-            text-align: center;
-            grid-template-columns: 30% 35% 30%;
+            grid-template-columns: 1fr 7.5cm 1fr;
             margin-top: 20px;
 
+            /* background-color: rgb(23, 170, 99);
+            border: 2px solid rgb(79, 185, 227); */
+
         }
 
-        .container-main-one>div {
-            border-radius: 5px;
-        }
-
-        .container-main-one-qr {
-
+        .cards {
             display: grid;
             text-align: center;
             justify-content: center;
-            grid-template-rows: 60% 15% 15% 10%;
-
-
+            align-items: center;
+            margin-top: 20px;
+            width: 7.5cm;
+            height: 7.5cm;
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            /* border: 2px solid rgb(79, 185, 227); */
         }
 
-        .container-main-one-qr>div {
-            padding: 3px;
+        .content-qr {
+            display: grid;
+            grid-template-columns: auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qr {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 5cm;
+            height: 5cm;
+
+            /* background-color: rgb(211, 132, 27);
+            border: 2px solid rgb(79, 185, 227); */
+        }
+
+        .text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             margin: 2px;
+
+            /* background-color: rgb(59, 34, 201);
+            border: 2px solid rgb(79, 185, 227); */
         }
 
 
@@ -90,7 +113,6 @@
             text-align: center;
             grid-template-columns: 1fr 1fr 1fr;
             margin-top: 50px;
-
         }
 
         .container-main-two>div {
@@ -108,15 +130,9 @@
             border: 2px solid rgb(79, 185, 227); */
             height: 100%;
             padding: 10px;
-
-
         }
 
-        .content-qr {
-            background: white;
-            width: 7.5cm;
-            height: 7.5cm;
-        }
+
 
         .container-main-two-img>div {
             padding: 10px;
@@ -209,19 +225,19 @@
 
         <div class="container-main-one">
             <div></div>
-            <div class="content-qr">
-                <div class="container-main-one-qr">
-                    <div>
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALoAAAC6AQMAAAAjwMWyAAAABlBMVEX///8AAABVwtN+AAABRElEQVRYhc2X0Q3DMAhEkTxARvLqHskDIFHuLoladYCz1TaNXz4QcBccceQahRVXRcy8qvbE/XaD/sYctfTE2DO0aQazQ+zdZMR8qA4BuO/fax0GogjyFBDMXVQtttpvzV3g6bP386MPE3hXh0uJ/i0LuCiAbrWrk7iU07SD6IbrVKLVYGSsLrET9BaVyRpDCR39QrhecPfWhAzgaNh99WEDTJ9eRfhPLys72Lyg56BJFXjYQZX6PmUfbL6yg02ziLuoDH1FmEFf6KoIN+kaj3E4gd7Wg/d8KFImawVB80qw0jDBnJrBHShLWxAn9JB2IGPlkApZ0vbtQGtsTc9rvOK0gvuYQf+isWLKUXadQMcMTs9JGUiobjA1NMs4nuiPANQAxEmVrjwEqPU03DxThhWEjmHSpMTwVXMTeGWgQLlrB0euD3OlZ7AupfLIAAAAAElFTkSuQmCC"
-                            style="height:100%">
+            <div class="cards">
+                <div class="content-qr">
+                    <div class="qr">
+                        <img src={{qr}} style="height:100% ; width: 100%;">
                     </div>
-                    <div class="text-qr-head"><strong>{{branch}}</strong>
-                    </div>
-                    <div class="text-qr-footer">{{sitebranch}} <br> {{codesite}}
-                    </div>
-
+                </div>
+                <div class="text">
+                    <strong>{{branch}}</strong>
+                    <br>
+                    <span>{{sitebranch}}<br>{{codesite}}</span>
                 </div>
             </div>
+
             <div></div>
         </div>
 

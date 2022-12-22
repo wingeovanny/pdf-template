@@ -1,11 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PdfHelper } from 'src/shared/pdf-generator';
 import { FileData } from './dto/create-create-document-qr.dto';
-
-import * as fs from 'fs';
-import * as handlebars from 'handlebars';
-import * as puppeteer from 'puppeteer';
-import * as path from 'path';
+import * as QRCode from 'qrcode'
 
 @Injectable()
 export class CreateDocumentQrService {
@@ -13,7 +9,17 @@ export class CreateDocumentQrService {
   constructor(private pdfHelper: PdfHelper) {
   }
 
+  async generateQr() {
+    try {
+      return await QRCode.toDataURL('www.google.com', { width: 100 });
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   async generateQrPdf(info: FileData): Promise<any> {
+    const qr = await this.generateQr();
+    info.data.qr = qr;
     return this.pdfHelper.createPDF(info);
   }
 
