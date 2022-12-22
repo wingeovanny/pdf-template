@@ -32,10 +32,6 @@ export class PdfHelper {
     }
 
 
-    async closeBrowser() {
-        await this.browser.close();
-    }
-
     public async createPDF(dataFile: FileData) {
 
         const templateHtml = fs.readFileSync(`./src/assets/templates/${dataFile.template}`, 'utf8');

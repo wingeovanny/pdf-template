@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CreateDocumentQrService } from './create-document-qr.service';
 import { CreateDocumentQrController } from './create-document-qr.controller';
-import { PdfHelper } from 'src/shared/pdf-generator';
+import { PdfHelper } from '../../shared/pdf-generator';
 
 @Module({
 

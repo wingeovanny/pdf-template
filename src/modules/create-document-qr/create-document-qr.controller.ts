@@ -27,7 +27,7 @@ export class CreateDocumentQrController {
         coderedmainsite: "COD-001029"
       }
     }
-    return this.createDocumentQrService.generateQrPdf(dataQr);
+    return this.createDocumentQrService.generateQrPdf(data);
   }
 
 
