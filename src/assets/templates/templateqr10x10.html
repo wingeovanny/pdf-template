@@ -52,16 +52,35 @@
 
         .contenedor-body-qrs {
             display: grid;
-            grid-template-columns: 1.5cm 13cm 1.5cm;
+            grid-template-columns: 1fr 13cm 1fr;
             border-top: 1px dashed black;
+
         }
 
 
         .cards {
 
+            /* background-color: rgb(207, 232, 220);
+            border: 2px solid rgb(79, 185, 227); */
             margin-top: 15px;
-            width: 12cm;
-            height: 11cm;
+            width: 100%;
+            height: 95%;
+            border-radius: 0px;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center center;
+
+
+        }
+
+        .content-qr {
+            display: grid;
+            grid-template-columns: auto;
+            justify-content: center;
+            align-items: center;
+
         }
 
 
@@ -70,13 +89,14 @@
             text-align: center;
             justify-content: center;
             height: 9cm;
+            width: 9cm;
 
         }
 
 
 
         .text-qr {
-            margin-top: 4px;
+            margin-top: 10px;
             font-family: 'Prelo';
             font-style: normal;
             font-weight: 500;
@@ -132,9 +152,10 @@
                         <div class="texto-vertical-2">{{coderedmainsite}}</div>
                     </div>
                     <div class="cards">
-                        <div class="qr2">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALoAAAC6AQMAAAAjwMWyAAAABlBMVEX///8AAABVwtN+AAABRElEQVRYhc2X0Q3DMAhEkTxARvLqHskDIFHuLoladYCz1TaNXz4QcBccceQahRVXRcy8qvbE/XaD/sYctfTE2DO0aQazQ+zdZMR8qA4BuO/fax0GogjyFBDMXVQtttpvzV3g6bP386MPE3hXh0uJ/i0LuCiAbrWrk7iU07SD6IbrVKLVYGSsLrET9BaVyRpDCR39QrhecPfWhAzgaNh99WEDTJ9eRfhPLys72Lyg56BJFXjYQZX6PmUfbL6yg02ziLuoDH1FmEFf6KoIN+kaj3E4gd7Wg/d8KFImawVB80qw0jDBnJrBHShLWxAn9JB2IGPlkApZ0vbtQGtsTc9rvOK0gvuYQf+isWLKUXadQMcMTs9JGUiobjA1NMs4nuiPANQAxEmVrjwEqPU03DxThhWEjmHSpMTwVXMTeGWgQLlrB0euD3OlZ7AupfLIAAAAAElFTkSuQmCC"
-                                style="height:100%">
+                        <div class="content-qr">
+                            <div class="qr2">
+                                <img src={{qr}} style="height:100% ; width: 100%;">
+                            </div>
                         </div>
                         <div class="text-qr">
                             <strong>{{branch}}</strong>
@@ -157,9 +178,10 @@
                         <div class="texto-vertical-2">{{coderedmainsite}}</div>
                     </div>
                     <div class="cards">
-                        <div class="qr2">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALoAAAC6AQMAAAAjwMWyAAAABlBMVEX///8AAABVwtN+AAABRElEQVRYhc2X0Q3DMAhEkTxARvLqHskDIFHuLoladYCz1TaNXz4QcBccceQahRVXRcy8qvbE/XaD/sYctfTE2DO0aQazQ+zdZMR8qA4BuO/fax0GogjyFBDMXVQtttpvzV3g6bP386MPE3hXh0uJ/i0LuCiAbrWrk7iU07SD6IbrVKLVYGSsLrET9BaVyRpDCR39QrhecPfWhAzgaNh99WEDTJ9eRfhPLys72Lyg56BJFXjYQZX6PmUfbL6yg02ziLuoDH1FmEFf6KoIN+kaj3E4gd7Wg/d8KFImawVB80qw0jDBnJrBHShLWxAn9JB2IGPlkApZ0vbtQGtsTc9rvOK0gvuYQf+isWLKUXadQMcMTs9JGUiobjA1NMs4nuiPANQAxEmVrjwEqPU03DxThhWEjmHSpMTwVXMTeGWgQLlrB0euD3OlZ7AupfLIAAAAAElFTkSuQmCC"
-                                style="height:100%">
+                        <div class="content-qr">
+                            <div class="qr2">
+                                <img src={{qr}} style="height:100% ; width: 100%;">
+                            </div>
                         </div>
                         <div class="text-qr">
                             <strong>{{branch}}</strong>

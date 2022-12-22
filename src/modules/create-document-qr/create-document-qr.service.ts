@@ -11,7 +11,7 @@ export class CreateDocumentQrService {
 
   async generateQr() {
     try {
-      return await QRCode.toDataURL('www.google.com', { width: 100 });
+      return await QRCode.toDataURL('www.google.com', { width: 500 });
     } catch (err) {
       console.error(err)
     }
@@ -22,6 +22,8 @@ export class CreateDocumentQrService {
     info.data.qr = qr;
     return this.pdfHelper.createPDF(info);
   }
+
+
 
 
 }
