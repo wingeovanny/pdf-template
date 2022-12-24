@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CreateDocumentQrController } from './create-document-qr.controller';
-import { CreateDocumentQrService } from './create-document-qr.service';
+import { CreateDocumentQrController } from '../../../../modules/create-document-qr/create-document-qr.controller';
+import { CreateDocumentQrService } from '../../../../modules/create-document-qr/create-document-qr.service';
 
 
 describe('CreateDocumentQrController', () => {
