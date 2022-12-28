@@ -7,3 +7,9 @@ export class FileData {
     @ApiProperty()
     data: any;
 }
+
+
+export class BufferResponse {
+    dataBuffer: Buffer;
+    dataBase64: string;
+}

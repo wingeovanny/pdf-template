@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Header, Headers } from '@nestjs/common';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { CreateDocumentQrService } from './create-document-qr.service';
-import { FileData } from './dto/create-create-document-qr.dto';
+import { BufferResponse, FileData } from './dto/create-create-document-qr.dto';
 
 
 @ApiTags('qr-files')
@@ -16,7 +16,7 @@ export class CreateDocumentQrController {
     description: 'Pdf qr',
   })
   @Header('Content-Type', 'appication/pdf')
-  generaPdfQR(@Headers() headers, @Body() dataQr: FileData): Promise<any> {
+  generaPdfQR(@Headers() headers, @Body() dataQr: FileData): Promise<BufferResponse> {
 
     const data = {
       template: "templateqrfondo.html",
@@ -27,7 +27,13 @@ export class CreateDocumentQrController {
         coderedmainsite: "COD-001029"
       }
     }
-    return this.createDocumentQrService.generateQrPdf(data);
+
+    return this.createDocumentQrService.generateQrPdf(dataQr).then((resp) => {
+      console.log('resp', resp);
+      return resp;
+    });
+
+
   }
 
 

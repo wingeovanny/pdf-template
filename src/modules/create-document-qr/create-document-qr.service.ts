@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PdfHelper } from '../../shared/pdf-generator';
-import { FileData } from './dto/create-create-document-qr.dto';
+import { BufferResponse, FileData } from './dto/create-create-document-qr.dto';
 import * as QRCode from 'qrcode'
 
 @Injectable()
@@ -20,10 +20,15 @@ export class CreateDocumentQrService {
     }
   }
 
-  async generateQrPdf(info: FileData): Promise<any> {
+  async generateQrPdf(info: FileData): Promise<BufferResponse> {
     const qr = await this.generateQr();
     info.data.qr = qr;
-    return this.pdfHelper.createPDF(info);
+    const result = await this.pdfHelper.createPDF(info);
+    const resultService = new BufferResponse();
+    resultService.dataBuffer = result;
+    resultService.dataBase64 = resultService.dataBuffer.toString('base64');
+    return resultService;
+
   }
 
 }

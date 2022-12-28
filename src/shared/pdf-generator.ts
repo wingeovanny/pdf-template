@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as handlebars from 'handlebars';
 import * as puppeteer from 'puppeteer';
 import * as path from 'path';
-import { FileData } from 'src/modules/create-document-qr/dto/create-create-document-qr.dto';
+import { BufferResponse, FileData } from 'src/modules/create-document-qr/dto/create-create-document-qr.dto';
 
 export class PdfHelper {
     browser;
@@ -32,7 +32,7 @@ export class PdfHelper {
     }
 
 
-    public async createPDF(dataFile: FileData) {
+    public async createPDF(dataFile: FileData): Promise<Buffer> {
 
         const templateHtml = fs.readFileSync(`./src/assets/templates/${dataFile.template}`, 'utf8');
 
@@ -55,6 +55,7 @@ export class PdfHelper {
 
         const file = await page.pdf(this.fileOptions);
         await page.close();
+        console.log(file);
         return file;
 
     }
