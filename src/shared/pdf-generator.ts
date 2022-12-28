@@ -43,6 +43,7 @@ export class PdfHelper {
         const html = template(dataFile.data);
 
         const finalPageContent = eval('`' + html + '`');
+
         if (!this.browser) {
             await this.startBrowser();
         }
@@ -51,11 +52,11 @@ export class PdfHelper {
             waitUntil: 'networkidle0',
         });
 
-        this.fileOptions.path = path.join('pdf', `${'dato'}-${milis}.pdf`);
+        //this.fileOptions.path = path.join('pdf', `${'dato'}-${milis}.pdf`);
 
         const file = await page.pdf(this.fileOptions);
         await page.close();
-        console.log(file);
+        //  console.log(file);
         return file;
 
     }

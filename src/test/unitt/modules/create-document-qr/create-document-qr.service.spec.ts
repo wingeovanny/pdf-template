@@ -1,10 +1,25 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { FileData } from 'src/modules/create-document-qr/dto/create-create-document-qr.dto';
 import { CreateDocumentQrService } from '../../../../modules/create-document-qr/create-document-qr.service';
-import { FileData } from '../../../../modules/create-document-qr/dto/create-create-document-qr.dto';
+import { mockBufferResponse } from '../../mockData';
 
 describe('CreateDocumentQrService', () => {
 
   let serviceQr: CreateDocumentQrService;
+
+
+  const data: FileData = {
+    template: "templateqrfondo.html",
+    data: {
+      branch: "MACDONALS",
+      sitebranch: "AV PATRIA Y AMAZONAS",
+      codesite: "298102",
+      coderedmainsite: "COD-001029",
+      idnode: "www.google.com"
+    }
+  }
+
+
 
 
   beforeEach(async () => {
@@ -26,8 +41,18 @@ describe('CreateDocumentQrService', () => {
     expect(typeof result).toBe('string');
   });
 
+  // it('should return a buffer function generate only qr', async () => {
+  //   const result = await serviceQr.generateQrPdf(data);
+  //   expect(result.dataBuffer).toHaveProperty('buffer');
+
+  // }, 15000);
 
 
+  it('should return a buffer generate pdf and qr', async () => {
+    const result = await serviceQr.generateQrPdf(data);
+    expect(result.dataBuffer).toHaveProperty('buffer');
+
+  }, 15000);
 
 
 });

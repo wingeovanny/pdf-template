@@ -21,12 +21,19 @@ export class CreateDocumentQrService {
   }
 
   async generateQrPdf(info: FileData): Promise<BufferResponse> {
+
     const qr = await this.generateQr();
+
     info.data.qr = qr;
+
     const result = await this.pdfHelper.createPDF(info);
+
     const resultService = new BufferResponse();
+
     resultService.dataBuffer = result;
+
     resultService.dataBase64 = resultService.dataBuffer.toString('base64');
+
     return resultService;
 
   }
