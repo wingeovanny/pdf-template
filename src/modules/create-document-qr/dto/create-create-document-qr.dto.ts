@@ -5,7 +5,15 @@ export class FileData {
     template: string;
 
     @ApiProperty()
-    data: any;
+    data: dataTemplate[];
+}
+
+export interface dataTemplate {
+    branch: string;
+    sitebranch: string;
+    codesite: string;
+    coderedmainsite: string;
+    qr: string;
 }
 
 

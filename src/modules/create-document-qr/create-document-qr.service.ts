@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PdfHelper } from '../../shared/pdf-generator';
-import { BufferResponse, FileData } from './dto/create-create-document-qr.dto';
+import { BufferResponse, dataTemplate, FileData } from './dto/create-create-document-qr.dto';
 import * as QRCode from 'qrcode'
 
 @Injectable()
@@ -12,28 +12,26 @@ export class CreateDocumentQrService {
     this.pdfHelper = new PdfHelper;
   }
 
-  async generateQr() {
+  async generateQr(value: string) {
     try {
-      return await QRCode.toDataURL('www.google.com', { width: 500 });
+      return await QRCode.toDataURL(value, { width: 500 });
     } catch (err) {
       console.error(err)
     }
   }
 
   async generateQrPdf(info: FileData): Promise<BufferResponse> {
-
-    const qr = await this.generateQr();
-
-    info.data.qr = qr;
-
-    const result = await this.pdfHelper.createPDF(info);
-
+    await Promise.all(
+      info.data.map(async (item: dataTemplate) => {
+        item.qr = await this.generateQr(item.qr);
+      })
+    );
+    //const result = await this.pdfHelper.createPDF(info);
+    const result = await this.pdfHelper.createDocumentPDF(info);
     const resultService = new BufferResponse();
-
-    resultService.dataBuffer = result;
-
-    resultService.dataBase64 = resultService.dataBuffer.toString('base64');
-
+    //resultService.dataBuffer = result;
+    resultService.dataBase64 = result.toString('base64');
+    //console.log(resultService.dataBase64);
     return resultService;
 
   }

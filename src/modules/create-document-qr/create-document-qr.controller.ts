@@ -18,18 +18,38 @@ export class CreateDocumentQrController {
   @Header('Content-Type', 'appication/pdf')
   generaPdfQR(@Body() dataQr: FileData): Promise<BufferResponse> {
 
-    const data = {
-      template: "templateqrfondo.html",
-      data: {
-        branch: "MACDONALS",
-        sitebranch: "AV PATRIA Y AMAZONAS",
-        codesite: "298102",
-        coderedmainsite: "COD-001029"
-      }
-    }
+
+
+    // const filedata: FileData = {
+    //   template: 'templateqrfondo.html',
+    //   data: [
+    //     {
+    //       branch: "MACDONALS",
+    //       sitebranch: "AV PATRIA Y AMAZONAS",
+    //       codesite: "298102",
+    //       coderedmainsite: "COD-001029",
+    //       qr: "www.google.com"
+    //     },
+    //     {
+    //       branch: "MACDONALS",
+    //       sitebranch: "AV PATRIA Y AMAZONAS",
+    //       codesite: "298102",
+    //       coderedmainsite: "COD-001029",
+    //       qr: "www.youtube.com"
+    //     },
+    //     {
+    //       branch: "MACDONALS",
+    //       sitebranch: "AV PATRIA Y AMAZONAS",
+    //       codesite: "298102",
+    //       coderedmainsite: "COD-001029",
+    //       qr: "https://www.apollographql.com/docs/react/data/mutations/"
+    //     }
+    //   ]
+    // };
+
 
     return this.createDocumentQrService.generateQrPdf(dataQr).then((resp) => {
-      console.log('resp', resp);
+      //   console.log('resp', resp);
       return resp;
     });
 
