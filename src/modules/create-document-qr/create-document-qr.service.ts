@@ -1,22 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { PdfHelper } from '../../shared/pdf-generator';
-import { BufferResponse, dataTemplate, FileData } from './dto/create-create-document-qr.dto';
-import * as QRCode from 'qrcode'
+import {
+  BufferResponse,
+  dataTemplate,
+  FileData,
+} from './dto/create-create-document-qr.dto';
+import * as QRCode from 'qrcode';
 
 @Injectable()
 export class CreateDocumentQrService {
-
-  private pdfHelper: PdfHelper
+  private pdfHelper: PdfHelper;
 
   constructor() {
-    this.pdfHelper = new PdfHelper;
+    this.pdfHelper = new PdfHelper();
   }
 
   async generateQr(value: string) {
     try {
       return await QRCode.toDataURL(value, { width: 500 });
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
   }
 
@@ -24,16 +27,27 @@ export class CreateDocumentQrService {
     await Promise.all(
       info.data.map(async (item: dataTemplate) => {
         item.qr = await this.generateQr(item.qr);
-      })
+      }),
     );
-    //const result = await this.pdfHelper.createPDF(info);
-    const result = await this.pdfHelper.createDocumentPDF(info);
-    const resultService = new BufferResponse();
-    //resultService.dataBuffer = result;
-    resultService.dataBase64 = result.toString('base64');
-    //console.log(resultService.dataBase64);
-    return resultService;
 
+    const limitPage = 12;
+
+    const limiteData = this.obtenerLimite(info.data.length, limitPage);
+
+    console.log(limiteData);
+    const result = await this.pdfHelper.createDocumentPDFNveces(
+      info,
+      limiteData,
+      limitPage,
+    );
+    const resultService = new BufferResponse();
+
+    resultService.dataBase64 = result.toString('base64');
+
+    return resultService;
   }
 
+  obtenerLimite(num: number, multiploBase: number): number {
+    return num + (multiploBase - (num % multiploBase));
+  }
 }
