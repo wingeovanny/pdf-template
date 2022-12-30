@@ -5,7 +5,7 @@ export class FileData {
   template: string;
 
   @ApiProperty()
-  data: dataTemplate[];
+  data: any;
 }
 
 export class contenidoHt {

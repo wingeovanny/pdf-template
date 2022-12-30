@@ -25,13 +25,17 @@ export class CreateDocumentQrService {
 
   async generateQrPdf(info: FileData): Promise<BufferResponse> {
     await Promise.all(
-      info.data.map(async (item: dataTemplate) => {
+      info.data.map(async (item: any) => {
         item.qr = await this.generateQr(item.qr);
       }),
     );
 
-    const limitPage = 12;
+    let limitPage = 0;
+    if (info.template === 'templateBase.html') {
+      limitPage = 12;
+    }
 
+    console.log(limitPage);
     const limiteData = this.obtenerLimite(info.data.length, limitPage);
 
     console.log(limiteData);
