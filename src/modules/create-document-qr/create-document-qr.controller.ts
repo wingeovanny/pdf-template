@@ -27,7 +27,7 @@ export class CreateDocumentQrController {
   @Header('Content-Type', 'appication/pdf')
   generaPdfQR(@Body() dataQr: FileData): Promise<BufferResponse> {
     const filedata: FileData = {
-      template: 'templateBase5x5.html',
+      template: 'templateBaseFondo.html',
       data: [
         {
           branch: 'MACDONALS',

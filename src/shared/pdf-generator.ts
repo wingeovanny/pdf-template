@@ -12,8 +12,7 @@ export class PdfHelper {
   fileOptions = {
     width: '21cm',
     height: '29.7cm',
-    headerTemplate: '<p></p>',
-    footerTemplate: '<p></p>',
+
     displayHeaderFooter: false,
     margin: {
       top: '0',
@@ -105,16 +104,16 @@ export class PdfHelper {
     limitData: number,
     limitePage: number,
   ): Promise<Buffer> {
-    var finalPageContent = '';
+    let finalPageContent = '';
 
-    var contador = 1;
-    var contentHtml: BodyContent = {
+    let contador = 1;
+    let contentHtml: BodyContent = {
       bodycap: '',
     };
     // Itera sobre el conjunto de datos y genera un PDF por cada iteración
 
     for (let i = 1; i <= limitData; i++) {
-      var datum = dataFile.data[i - 1]; // Obtiene el dato para la página actual
+      let datum = dataFile.data[i - 1]; // Obtiene el dato para la página actual
 
       if (datum === undefined) {
         datum = {
@@ -203,7 +202,7 @@ export class PdfHelper {
             <strong>${datum.branch}</strong>
           </div>
           <div class="text-footer-qr">${datum.sitebranch}</div>
-          <div class="text-footer-qr">${datum.sitebranch}</div>
+          <div class="text-footer-qr">${datum.codesite}</div>
         </div>
         <div class="texto-vertical-1 ">
           <div class="texto-vertical-2">${datum.coderedmainsite}</div>
