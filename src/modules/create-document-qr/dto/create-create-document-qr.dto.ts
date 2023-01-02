@@ -1,3 +1,4 @@
+import { Body } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class FileData {
@@ -8,16 +9,8 @@ export class FileData {
   data: any;
 }
 
-export class contenidoHt {
+export class BodyContent {
   bodycap: string;
-}
-
-export interface dataTemplate {
-  branch: string;
-  sitebranch: string;
-  codesite: string;
-  coderedmainsite: string;
-  qr: string;
 }
 
 export class BufferResponse {

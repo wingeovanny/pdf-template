@@ -1,14 +1,10 @@
-import {
-  contenidoHt,
-  dataTemplate,
-} from './../modules/create-document-qr/dto/create-create-document-qr.dto';
+import { BodyContent } from './../modules/create-document-qr/dto/create-create-document-qr.dto';
 import * as fs from 'fs';
 import * as _ from 'lodash';
 import * as handlebars from 'handlebars';
 import path from 'path';
 import * as puppeteer from 'puppeteer';
 import { FileData } from 'src/modules/create-document-qr/dto/create-create-document-qr.dto';
-import { ConsoleLogger } from '@nestjs/common';
 
 export class PdfHelper {
   browser;
@@ -96,7 +92,6 @@ export class PdfHelper {
       waitUntil: 'networkidle0',
     });
 
-    // this.fileOptions.path = path.join('pdf', `${'dato'}-${milis}.pdf`);
     // Genera el archivo PDF a partir del contenido final
     const file = await page.pdf(this.fileOptions);
 
@@ -113,7 +108,7 @@ export class PdfHelper {
     var finalPageContent = '';
 
     var contador = 1;
-    var aux: contenidoHt = {
+    var contentHtml: BodyContent = {
       bodycap: '',
     };
     // Itera sobre el conjunto de datos y genera un PDF por cada iteración
@@ -131,7 +126,11 @@ export class PdfHelper {
         };
       }
 
-      aux.bodycap += await this.createCardsDiv(datum);
+      if (limitePage != 1) {
+        contentHtml.bodycap += await this.createCardsDiv(datum, limitePage);
+      } else {
+        contentHtml = datum;
+      }
 
       if (contador == limitePage) {
         const templateHtml = fs.readFileSync(
@@ -140,12 +139,15 @@ export class PdfHelper {
         );
 
         const template = handlebars.compile(templateHtml);
+
         // Genera el contenido HTML para la página actual
-        const html = template(aux);
+        const html = template(contentHtml);
+
         // Agrega el contenido HTML de la página actual al contenido final del PDF
         finalPageContent += eval('`' + html + '`');
+
         contador = 0;
-        aux.bodycap = '';
+        contentHtml.bodycap = '';
         // console.log(finalPageContent);
       }
       contador++;
@@ -168,20 +170,46 @@ export class PdfHelper {
     return file;
   }
 
-  async createCardsDiv(datum: any) {
-    return `
-     <div>
-         <div class="cards">
-             <div class="body-primary">
-                 <div class="content-qr"> <img src=${datum.qr} style="height:100% ; width: 100%;"></div>
-                 <div class="fotter-qr">
-                     <div class="text">${datum.branch}</div>
-                     <div class="text">${datum.sitebranch}</div>
-                     <div class="text">${datum.codesite}</div>
-                 </div>
-             </div>
-             <div class="fotter-primary">${datum.coderedmainsite}</div>
-         </div>
-     </div> `;
+  async createCardsDiv(datum: any, typeDatum: number) {
+    switch (typeDatum) {
+      case 12:
+        return `
+        <div>
+            <div class="cards">
+                <div class="body-primary">
+                    <div class="content-qr"> <img src=${datum.qr} style="height:100% ; width: 100%;"></div>
+                    <div class="fotter-qr">
+                        <div class="text">${datum.branch}</div>
+                        <div class="text">${datum.sitebranch}</div>
+                        <div class="text">${datum.codesite}</div>
+                    </div>
+                </div>
+                <div class="fotter-primary">${datum.coderedmainsite}</div>
+            </div>
+        </div> `;
+      case 2:
+        return `
+        <div class="contenedor-body-qrs">
+        <div class="texto-vertical-1 ">
+          <div class="texto-vertical-2">${datum.coderedmainsite}</div>
+        </div>
+        <div class="cards">
+          <div class="content-qr">
+            <div class="qr2">
+              <img src=${datum.qr} style="height:100%; width: 100%;">
+            </div>
+          </div>
+          <div class="text-qr">
+            <strong>${datum.branch}</strong>
+          </div>
+          <div class="text-footer-qr">${datum.sitebranch}</div>
+          <div class="text-footer-qr">${datum.sitebranch}</div>
+        </div>
+        <div class="texto-vertical-1 ">
+          <div class="texto-vertical-2">${datum.coderedmainsite}</div>
+        </div>
+      </div>
+        `;
+    }
   }
 }

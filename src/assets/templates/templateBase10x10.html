@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR_A4_2</title>
+
+  <style>
+    body {
+      background: rgb(204, 204, 204);
+
+    }
+
+    page[size="A4"] {
+      background: #FFFFFF;
+      width: 21cm;
+      height: 29.7cm;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 0.5cm;
+      box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+    }
+
+    @media print {
+
+      body,
+      page[size="A4"] {
+        margin: 0;
+        box-shadow: 0;
+      }
+    }
+
+
+
+    .contenedor {
+      display: grid;
+      grid-template-columns: auto;
+      width: 21cm;
+      height: 29.6cm;
+
+    }
+
+    .contenedor-qrs {
+      display: grid;
+      margin: 50px 80px 50px 80px;
+      grid-template-columns: auto;
+      justify-content: center;
+
+    }
+
+    .contenedor-body-qrs {
+      display: grid;
+      grid-template-columns: 1fr 13cm 1fr;
+      border: 1px dashed black;
+
+      /* background-color: rgb(207, 232, 220);
+      border: 2px solid rgb(79, 185, 227); */
+
+    }
+
+
+    .cards {
+
+      /* background-color: rgb(207, 232, 220);
+            border: 2px solid rgb(79, 185, 227); */
+      margin-top: 15px;
+      width: 100%;
+      height: 95%;
+      border-radius: 0px;
+      font-weight: bold;
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center center;
+
+    }
+
+    .content-qr {
+      display: grid;
+      grid-template-columns: auto;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+
+    .qr2 {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      height: 9cm;
+      width: 9cm;
+
+
+    }
+
+
+
+    .text-qr {
+      margin-top: 10px;
+      font-family: 'Prelo';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 32px;
+      color: #000000;
+      text-align: center;
+
+
+    }
+
+    .text-footer-qr {
+      margin-top: 2px;
+      font-family: 'Prelo';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      color: #000000;
+      text-align: center;
+    }
+
+
+
+
+    .texto-vertical-1 {
+      align-items: center;
+      display: flex;
+      border-left: 1px dashed black;
+      border-right: 1px dashed black;
+    }
+
+    .texto-vertical-2 {
+
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      text-align: right;
+      margin: 10px;
+      font-weight: bold;
+
+    }
+  </style>
+</head>
+
+<body>
+  <page size="A4">
+    <div class="contenedor">
+      <div class="contenedor-qrs ">
+        {{{bodycap}}}
+      </div>
+    </div>
+
+  </page>
+
+</body>
+
+</html>

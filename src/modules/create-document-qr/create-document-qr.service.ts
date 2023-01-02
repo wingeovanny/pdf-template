@@ -1,10 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PdfHelper } from '../../shared/pdf-generator';
-import {
-  BufferResponse,
-  dataTemplate,
-  FileData,
-} from './dto/create-create-document-qr.dto';
+import { BufferResponse, FileData } from './dto/create-create-document-qr.dto';
 import * as QRCode from 'qrcode';
 
 @Injectable()
@@ -30,15 +26,23 @@ export class CreateDocumentQrService {
       }),
     );
 
+    let limiteData = 0;
     let limitPage = 0;
-    if (info.template === 'templateBase.html') {
-      limitPage = 12;
+
+    switch (info.template) {
+      case 'templateBase5x5.html':
+        limitPage = 12;
+        limiteData = this.obtenerLimite(info.data.length, limitPage);
+        break;
+      case 'templateBase10x10.html':
+        limitPage = 2;
+        limiteData = this.obtenerLimite(info.data.length, limitPage);
+        break;
+      default: //template de 1 solo qr con fondo. templateBaseFondo.html
+        limitPage = 1;
+        limiteData = info.data.length;
     }
 
-    console.log(limitPage);
-    const limiteData = this.obtenerLimite(info.data.length, limitPage);
-
-    console.log(limiteData);
     const result = await this.pdfHelper.createDocumentPDFNveces(
       info,
       limiteData,
