@@ -7,16 +7,18 @@ import { mockBufferResponse } from '../../mockData';
 describe('CreateDocumentQrController', () => {
   let controller: CreateDocumentQrController;
 
-  // const dataQr: FileData = {
-  //   template: "templateqrfondo.html",
-  //   data: {
-  //     branch: "MACDONALS",
-  //     sitebranch: "AV PATRIA Y AMAZONAS",
-  //     codesite: "298102",
-  //     coderedmainsite: "COD-001029",
-  //     idnode: "www.google.com"
-  //   }
-  // }
+  const dataQr: FileData = {
+    template: 'templateqrfondo.html',
+    data: [
+      {
+        branch: 'MACDONALS',
+        sitebranch: 'AV PATRIA Y AMAZONAS',
+        codesite: '298102',
+        coderedmainsite: 'COD-001029',
+        idnode: 'www.google.com',
+      },
+    ],
+  };
 
   const mockFindOne = jest.fn(() => Promise.resolve(mockBufferResponse));
 
@@ -37,7 +39,6 @@ describe('CreateDocumentQrController', () => {
 
   // it('should return a buffer', async () => {
   //   const result = await controller.generaPdfQR(dataQr);
-  //   expect(result.dataBuffer).toHaveProperty('buffer');
-
+  //   expect(result.dataBase64).toHaveProperty('string');
   // }, 15000);
 });

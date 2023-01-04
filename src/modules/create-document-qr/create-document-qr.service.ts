@@ -42,7 +42,7 @@ export class CreateDocumentQrService {
         limitPage = 1;
         limiteData = info.data.length;
     }
-    console.log(limiteData);
+
     const result = await this.pdfHelper.createDocumentPDFNveces(
       info,
       limiteData,
