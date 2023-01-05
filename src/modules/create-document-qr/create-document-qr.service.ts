@@ -26,39 +26,16 @@ export class CreateDocumentQrService {
       }),
     );
 
-    let limiteData = 0;
-    let limitPage = 0;
+    const arrayTemplate = info.template.split('.');
 
-    switch (info.template) {
-      case 'templateBase5x5.html':
-        limitPage = 12;
-        limiteData = this.obtenerLimite(info.data.length, limitPage);
-        break;
-      case 'templateBase10x10.html':
-        limitPage = 2;
-        limiteData = this.obtenerLimite(info.data.length, limitPage);
-        break;
-      default: //template de 1 solo qr con fondo. templateBaseFondo.html
-        limitPage = 1;
-        limiteData = info.data.length;
-    }
+    const result = await this.pdfHelper.functionsGenerationPdf[
+      arrayTemplate[0]
+    ](info);
 
-    const result = await this.pdfHelper.createDocumentPDFNveces(
-      info,
-      limiteData,
-      limitPage,
-    );
     const resultService = new BufferResponse();
 
     resultService.dataBase64 = result.toString('base64');
 
     return resultService;
-  }
-
-  obtenerLimite(limitData: number, limitPage: number): number {
-    if (limitData % limitPage === 0) {
-      return limitData;
-    }
-    return limitData + (limitPage - (limitData % limitPage));
   }
 }
